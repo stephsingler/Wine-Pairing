@@ -16,7 +16,7 @@ import { StackNavigator } from 'react-navigation';
           />
           <TouchableOpacity
             style={styles.button}
-            onPress={() => this.props.navigation.navigate('GetStarted')}
+            onPress={() => this.props.navigation.navigate('SignInSignUp')}
             >
             <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
