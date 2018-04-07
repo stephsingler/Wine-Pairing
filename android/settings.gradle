@@ -1,0 +1,3 @@
+rootProject.name = 'FitList'
+
+include ':app'
