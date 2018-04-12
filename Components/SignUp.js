@@ -12,9 +12,19 @@ import { StackNavigator } from 'react-navigation';
       this.state = {
         fullName: '',
         userName: '',
-        passWord: ''
+        passWord: '',
+        message: ""
       }
     }
+    handleSignUp = () => {
+      fetch('http://localhost:3001/users', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.state)
+      }).then(() => console.log('working'));
+      this.setState({fullName: '', userName: '', passWord: '', message: "Sign Up Successful!"})
+    };
+
     render() {
       return (
         <View style={styles.mainView}>
@@ -28,21 +38,36 @@ import { StackNavigator } from 'react-navigation';
             <TextInput
               placeholder="FullName"
               style={styles.input}
+              onChangeText={(name) => this.setState({fullName: name})}
+              value={this.state.fullName}
             />
             <TextInput
               placeholder='Username'
               style={styles.input}
+              onChangeText={(user) => this.setState({userName: user})}
+              value={this.state.userName}
             />
             <TextInput
               placeholder='Password'
               style={styles.input}
+              secureTextEntry={true}
+              onChangeText={(pass) => this.setState({passWord: pass})}
+              value={this.state.passWord}
             />
+            <Text style={styles.message}>{this.state.message}</Text>
             <View style={styles.button}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('SignInSignUp')}
-                style={styles.touch}>
-                <Text style={styles.buttonText}>Sign Up</Text>
-              </TouchableOpacity>
+              <View style={styles.flex}>
+                <TouchableOpacity
+                  onPress={this.handleSignUp}
+                  style={styles.touch}>
+                  <Text style={styles.buttonText}>Sign Up</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('SignInSignUp')}
+                  style={styles.touch}>
+                  <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+              </View>
               <Text style={styles.smallText}>Login after you sign up.</Text>
             </View>
           </View>
@@ -67,7 +92,7 @@ const styles = StyleSheet.create({
   },
   login: {
     width: '85%',
-    height: 320,
+    height: 330,
     marginLeft: '7.5%',
     borderRadius: 4,
     backgroundColor: '#dadada'
@@ -84,10 +109,17 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 17
   },
+  message: {
+    textAlign: 'center'
+  },
   button: {
     display: 'flex',
     alignItems: 'center',
     marginTop: 25
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row'
   },
   touch: {
     alignItems: 'center',
@@ -96,7 +128,9 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: '#eaeaea'
+    borderColor: '#eaeaea',
+    marginRight: 10,
+    marginLeft: 10
   },
   buttonText: {
     color: '#1C0000',

@@ -28,11 +28,15 @@
               <TextInput
                 placeholder='Username'
                 style={styles.input}
+                value={this.state.userName}
+                onChangeText={(user) => this.setState({userName: user})}
               />
               <TextInput
                 placeholder='Password'
                 style={styles.input}
                 secureTextEntry={true}
+                value={this.state.password}
+                onChangeText={(pass) => this.setState({passWord: pass})}
               />
               <View style={styles.button}>
                 <TouchableOpacity
