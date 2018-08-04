@@ -28,7 +28,7 @@
     },
     text: {
       textAlign: 'center',
-      fontFamily: 'Times',
+      fontFamily: 'Cochin',
       fontSize: 22,
       marginBottom: 15
     }
