@@ -10,5 +10,3 @@ A simple Wine & Cheese Pairing app.
     * yarn add react-navigation
 * React Redux - 
     * yarn add react-redux
-### Design
-* All illustrations in the app were created in Adobe Illustrator. 
