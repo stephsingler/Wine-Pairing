@@ -1,4 +1,4 @@
-# Wine-Pairing
+# Wine-Pairing -- THIS PROJECT IS CURRENTLY UNDERGOING AN UPGRADE!
 A simple Wine & Cheese Pairing app.
 
 ### Overview
